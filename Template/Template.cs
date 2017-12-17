@@ -9,8 +9,12 @@ namespace Contest
     {
         string ReadLine();
         T ReadLineAs<T>();
+
+        string[] ReadLineAndSplit(char delimiter = ' ');
         List<T> ReadLineAndSplitAsListOf<T>(char delimiter = ' ');
+
         void WriteLine(object obj);
+        void Debug(object obj);
     }
 
     public class ConsoleHelper : IConsoleHelper
@@ -27,9 +31,15 @@ namespace Contest
             return ConvertTo<T>(line);
         }
 
-        public List<T> ReadLineAndSplitAsListOf<T>(char delimiter = ' ')
+        public string[] ReadLineAndSplit(char delimiter = ' ')
         {
             var splittedLine = this.ReadLine().Split(delimiter);
+            return splittedLine;
+        }
+
+        public List<T> ReadLineAndSplitAsListOf<T>(char delimiter = ' ')
+        {
+            var splittedLine = this.ReadLineAndSplit();
 
             return splittedLine.Select(ConvertTo<T>).ToList();
         }
@@ -37,6 +47,11 @@ namespace Contest
         public virtual void WriteLine(object obj)
         {
             Console.WriteLine(obj);
+        }
+
+        public void Debug(object obj)
+        {
+            Console.Error.WriteLine(obj);
         }
 
         private static T ConvertTo<T>(string value)
