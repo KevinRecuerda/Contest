@@ -1,73 +1,32 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Contest
+namespace CodeChef.Oct18.HMAPPY.Tests
 {
     [TestFixture]
     public class ProgramTest
     {
         [TestCase(@"
-3
-...
-###
-...", @"
--2")]
+5 3
+1 2 3 4 5
+1 2 3 4 5", @"
+15")]
         [TestCase(@"
-4
-....
-#!!#
-#!!#
-....", @"
+5 20
+1 2 3 4 5
+1 2 3 4 5", @"
+0")]
+        [TestCase(@"
+5 5
+1 2 3 5 5
+1 2 3 5 5", @"
+15")]
+        [TestCase(@"
+5 10
+1 2 3 4 5
+1 2 3 4 5", @"
 4")]
-        [TestCase(@"
-5
-.....
-##!!#
-#!!!#
-#!!##
-.....", @"
--1")]
-        [TestCase(@"
-5
-.#.!.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
-5")]
-        [TestCase(@"
-5
-.#.#.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
--1")]
-        [TestCase(@"
-20
-..!..!!!!...!#.!!!.#
-.#!.#.##.#.!..!.#!!!
-!.!.#!#!!!!.!!.!.#!!
-!!#!!..##!!!#...#!.!
-#.!!!!.!..!.!!!!!!!.
-#!!!.!....!...!!!.!#
-!.#.!.!.#.!!!!..!!.#
-.!.!!!..!.!.##!..#!!
-.!!!.!!..###.####..!
-!!.!!..!.......#.!!.
-!#!..!.!!....!.!#.#.
-!#..!.!...!...!#!.!.
-.!!!.#!.!!!!!..!.!.#
-.#!.!..!.!.!!!.#.###
-#.!.!!!#.!...#.#.!#.
-!#!..!!#..#!#!#!!!!!
-.......#!.!!!!#..!!.
-!!!.!.!#!.!#!!#!!!.!
-!.!!.!.#.!.#!..!!..!
-!.....!!.....##.#!!.", @"
-18")]
         public void Test(string input, string output)
         {
             var consoleHelperForTests = new ConsoleHelperForTests(input);
@@ -75,8 +34,8 @@ namespace Contest
 
             Program.Solve();
 
-            var expected = output.Trim().Replace("\n", string.Empty).Replace("\r", string.Empty);
-            Assert.AreEqual(expected, consoleHelperForTests.Output.First());
+            var actual = string.Join(Environment.NewLine, consoleHelperForTests.Output);
+            Assert.AreEqual(output.Trim(), actual);
         }
 
         public class ConsoleHelperForTests : ConsoleHelper
@@ -86,7 +45,7 @@ namespace Contest
             public readonly List<string> Output;
 
             public ConsoleHelperForTests(string input)
-                : this(input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                : this(input.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
             {
             }
 

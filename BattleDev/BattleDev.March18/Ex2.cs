@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace BattleDev.March18.Ex2
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -63,6 +63,7 @@ namespace Contest
 
     public static class Program
     {
+
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -77,7 +78,25 @@ namespace Contest
 
         public static void Solve()
         {
-            
+            var price = ConsoleHelper.ReadLineAs<int>();
+            var n = ConsoleHelper.ReadLineAs<int>();
+
+            var gain = 0.0;
+            for (var i = 0; i < n; i++)
+            {
+                var personCount = ConsoleHelper.ReadLineAs<int>();
+                double bill = personCount * price;
+                if (personCount >= 10)
+                    bill *= 0.7;
+                else if (personCount >= 6)
+                    bill *= 0.8;
+                else if (personCount >= 4)
+                    bill *= 0.9;
+
+                gain += bill;
+            }
+
+            ConsoleHelper.WriteLine(Math.Ceiling(gain));
         }
     }
 }

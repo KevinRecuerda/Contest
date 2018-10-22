@@ -1,73 +1,57 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Contest
+namespace CodeChef.Oct18.CCIRCLES.Tests
 {
     [TestFixture]
     public class ProgramTest
     {
         [TestCase(@"
+2 3
+0 0 5
+8 3 2
+0
+10
+20", @"
+0
+1
+0")]
+        [TestCase(@"
+2 4
+0 0 5
+0 1 2
+0
+2
+8
+9", @"
+0
+1
+1
+0")]
+        [TestCase(@"
+2 4
+0 0 5
+0 4 2
+0
+5
+10
+12", @"
+1
+1
+1
+0")]
+        [TestCase(@"
+3 3
+0 0 5
+8 3 2
+-5 1 3
+0
+10
+20", @"
+1
 3
-...
-###
-...", @"
--2")]
-        [TestCase(@"
-4
-....
-#!!#
-#!!#
-....", @"
-4")]
-        [TestCase(@"
-5
-.....
-##!!#
-#!!!#
-#!!##
-.....", @"
--1")]
-        [TestCase(@"
-5
-.#.!.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
-5")]
-        [TestCase(@"
-5
-.#.#.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
--1")]
-        [TestCase(@"
-20
-..!..!!!!...!#.!!!.#
-.#!.#.##.#.!..!.#!!!
-!.!.#!#!!!!.!!.!.#!!
-!!#!!..##!!!#...#!.!
-#.!!!!.!..!.!!!!!!!.
-#!!!.!....!...!!!.!#
-!.#.!.!.#.!!!!..!!.#
-.!.!!!..!.!.##!..#!!
-.!!!.!!..###.####..!
-!!.!!..!.......#.!!.
-!#!..!.!!....!.!#.#.
-!#..!.!...!...!#!.!.
-.!!!.#!.!!!!!..!.!.#
-.#!.!..!.!.!!!.#.###
-#.!.!!!#.!...#.#.!#.
-!#!..!!#..#!#!#!!!!!
-.......#!.!!!!#..!!.
-!!!.!.!#!.!#!!#!!!.!
-!.!!.!.#.!.#!..!!..!
-!.....!!.....##.#!!.", @"
-18")]
+0")]
         public void Test(string input, string output)
         {
             var consoleHelperForTests = new ConsoleHelperForTests(input);
@@ -75,8 +59,8 @@ namespace Contest
 
             Program.Solve();
 
-            var expected = output.Trim().Replace("\n", string.Empty).Replace("\r", string.Empty);
-            Assert.AreEqual(expected, consoleHelperForTests.Output.First());
+            var actual = string.Join(Environment.NewLine, consoleHelperForTests.Output);
+            Assert.AreEqual(output.Trim(), actual);
         }
 
         public class ConsoleHelperForTests : ConsoleHelper
@@ -86,7 +70,7 @@ namespace Contest
             public readonly List<string> Output;
 
             public ConsoleHelperForTests(string input)
-                : this(input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                : this(input.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
             {
             }
 

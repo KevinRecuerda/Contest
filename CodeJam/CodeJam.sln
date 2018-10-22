@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeJam.April18", "CodeJam.April18\CodeJam.April18.csproj", "{CCDA86C4-8BE0-4894-A988-C4DACEC3FC51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeJam.April18.Tests", "CodeJam.April18.Tests\CodeJam.April18.Tests.csproj", "{0CDFCB4F-A120-4C26-944A-EB3174F4BC4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCDA86C4-8BE0-4894-A988-C4DACEC3FC51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCDA86C4-8BE0-4894-A988-C4DACEC3FC51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCDA86C4-8BE0-4894-A988-C4DACEC3FC51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCDA86C4-8BE0-4894-A988-C4DACEC3FC51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CDFCB4F-A120-4C26-944A-EB3174F4BC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CDFCB4F-A120-4C26-944A-EB3174F4BC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CDFCB4F-A120-4C26-944A-EB3174F4BC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CDFCB4F-A120-4C26-944A-EB3174F4BC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {487D0F23-638E-4D62-B938-0F82165C6606}
+	EndGlobalSection
+EndGlobal

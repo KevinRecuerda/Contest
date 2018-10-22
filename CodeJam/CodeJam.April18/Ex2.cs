@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace CodeJam.April18.Ex2
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -63,6 +63,7 @@ namespace Contest
 
     public static class Program
     {
+
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -72,12 +73,49 @@ namespace Contest
 
         public static void Main(string[] args)
         {
-            Solve();
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var i = 0; i < t; i++)
+            {
+                var n = ConsoleHelper.ReadLineAs<int>();
+                var numbers = ConsoleHelper.ReadLineAndSplitAsListOf<int>().ToArray();
+
+                var index = Solve(numbers);
+                var res = index >= 0 ? index.ToString() : "OK";
+                ConsoleHelper.WriteLine($"Case #{i + 1}: {res}");
+            }
         }
 
-        public static void Solve()
+        public static int Solve(int[] numbers)
         {
-            
+            TroubleSort(numbers);
+
+            for (var i = 0; i < numbers.Length - 1; i++)
+            {
+                if (numbers[i] > numbers[i + 1])
+                    return i;
+            }
+
+            return -1;
+        }
+
+        private static void TroubleSort(int[] numbers)
+        {
+            var done = false;
+            while (!done)
+            {
+                done = true;
+                for (var i = 0; i < numbers.Length-2; i++)
+                {
+                    if (numbers[i] > numbers[i + 2])
+                    {
+                        var tmp = numbers[i + 2];
+                        numbers[i + 2] = numbers[i];
+                        numbers[i] = tmp;
+
+                        done = false;
+                    }
+                }
+            }
         }
     }
 }

@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
-namespace Contest
+namespace BattleDev.March18.Ex5
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -63,6 +64,7 @@ namespace Contest
 
     public static class Program
     {
+
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -77,7 +79,51 @@ namespace Contest
 
         public static void Solve()
         {
-            
+            var n = ConsoleHelper.ReadLineAs<int>();
+            var matrix = new int[n][];
+            for (var i = 0; i < n; i++)
+            {
+                var line = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+                matrix[i] = line.ToArray();
+
+            }
+
+            var best = GetBestValue(n, matrix);
+
+            ConsoleHelper.WriteLine(best);
+        }
+
+        private static int GetBestValue(int n, int[][] matrix)
+        {
+            var bestMatrix = new int[n][];
+            for (var k = 0; k < n; k++)
+                bestMatrix[k] = new int[n];
+
+            for (var i = 0; i < n; i++)
+            {
+                for (var k = 0; k < n; k++)
+                {
+                    bestMatrix[k][i] = matrix[k][(k+i)%n];
+                    for (var j = 2; j <= i; j++)
+                    {
+                        var gain = bestMatrix[k][j-1] + bestMatrix[(k + j) % n][i-j];
+                        //var gain = bestMatrix[k][j-1] + matrix[(k+j)%n][(k+i)%n];
+                        bestMatrix[k][i] = Math.Max(bestMatrix[k][i], gain);
+                    }
+
+                    if (i >= 3)
+                    {
+                        var gain = bestMatrix[(k + 1) % n][i - 2] + matrix[k][(k + i) % n];
+                        bestMatrix[k][i] = Math.Max(bestMatrix[k][i], gain);
+                    }
+                }
+            }
+
+            var max = 0;
+            for (var i = 0; i < n; i++)
+                max = Math.Max(bestMatrix[i][n - 1], max);
+
+            return max;
         }
     }
 }

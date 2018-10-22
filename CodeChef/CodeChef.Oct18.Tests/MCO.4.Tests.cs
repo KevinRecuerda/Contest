@@ -1,82 +1,29 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Contest
+namespace CodeChef.Oct18.MCO4.Tests
 {
     [TestFixture]
     public class ProgramTest
     {
         [TestCase(@"
-3
-...
-###
-...", @"
--2")]
-        [TestCase(@"
-4
-....
-#!!#
-#!!#
-....", @"
-4")]
-        [TestCase(@"
-5
-.....
-##!!#
-#!!!#
-#!!##
-.....", @"
--1")]
-        [TestCase(@"
-5
-.#.!.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
-5")]
-        [TestCase(@"
-5
-.#.#.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
--1")]
-        [TestCase(@"
-20
-..!..!!!!...!#.!!!.#
-.#!.#.##.#.!..!.#!!!
-!.!.#!#!!!!.!!.!.#!!
-!!#!!..##!!!#...#!.!
-#.!!!!.!..!.!!!!!!!.
-#!!!.!....!...!!!.!#
-!.#.!.!.#.!!!!..!!.#
-.!.!!!..!.!.##!..#!!
-.!!!.!!..###.####..!
-!!.!!..!.......#.!!.
-!#!..!.!!....!.!#.#.
-!#..!.!...!...!#!.!.
-.!!!.#!.!!!!!..!.!.#
-.#!.!..!.!.!!!.#.###
-#.!.!!!#.!...#.#.!#.
-!#!..!!#..#!#!#!!!!!
-.......#!.!!!!#..!!.
-!!!.!.!#!.!#!!#!!!.!
-!.!!.!.#.!.#!..!!..!
-!.....!!.....##.#!!.", @"
-18")]
+2
+6
+4 16 32 6 8 2
+10
+16 8 7 9 6 10 32 2 4 3", @"
+2
+2")]
         public void Test(string input, string output)
         {
             var consoleHelperForTests = new ConsoleHelperForTests(input);
             Program.ConsoleHelper = consoleHelperForTests;
 
-            Program.Solve();
+            Program.SolveMultiple();
 
-            var expected = output.Trim().Replace("\n", string.Empty).Replace("\r", string.Empty);
-            Assert.AreEqual(expected, consoleHelperForTests.Output.First());
+            var actual = string.Join(Environment.NewLine, consoleHelperForTests.Output);
+            Assert.AreEqual(output.Trim(), actual);
         }
 
         public class ConsoleHelperForTests : ConsoleHelper
@@ -86,7 +33,7 @@ namespace Contest
             public readonly List<string> Output;
 
             public ConsoleHelperForTests(string input)
-                : this(input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                : this(input.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
             {
             }
 

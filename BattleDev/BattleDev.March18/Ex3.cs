@@ -1,10 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
-namespace Contest
+namespace BattleDev.March18.Ex3
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -56,9 +58,10 @@ namespace Contest
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T));
         }
     }
+
     #endregion
 
     public static class Program
@@ -77,7 +80,35 @@ namespace Contest
 
         public static void Solve()
         {
-            
+            var stars = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+            var n = ConsoleHelper.ReadLineAs<int>();
+            var k = ConsoleHelper.ReadLineAs<int>();
+
+            var friends = new List<Friend>();
+            for (var i = 0; i < n; i++)
+            {
+                var line = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+                var dist = 0;
+                for (var j = 0; j < 5; j++)
+                {
+                    dist += Math.Abs(stars[j] - line[j]);
+                }
+                var friend = new Friend()
+                {
+                    Dist = dist,
+                    NewEpisodeStar = line[5]
+                };
+                friends.Add(friend);
+            }
+
+            var average = friends.OrderBy(f => f.Dist).Take(k).Average(x => x.NewEpisodeStar);
+            ConsoleHelper.WriteLine(Math.Floor(average));
         }
+    }
+
+    public class Friend
+    {
+        public int Dist { get; set; }
+        public int NewEpisodeStar { get; set; }
     }
 }

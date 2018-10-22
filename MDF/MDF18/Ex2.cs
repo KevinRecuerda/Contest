@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace Contest.MDF18.Ex2
 {
     #region ConsoleHelper
     public interface IConsoleHelper

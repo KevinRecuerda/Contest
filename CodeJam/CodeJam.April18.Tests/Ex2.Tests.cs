@@ -3,80 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace CodeJam.April18.Ex2.Tests
 {
     [TestFixture]
     public class ProgramTest
     {
         [TestCase(@"
+2
+5
+5 6 8 4 3
 3
-...
-###
-...", @"
--2")]
-        [TestCase(@"
-4
-....
-#!!#
-#!!#
-....", @"
-4")]
-        [TestCase(@"
-5
-.....
-##!!#
-#!!!#
-#!!##
-.....", @"
--1")]
-        [TestCase(@"
-5
-.#.!.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
-5")]
-        [TestCase(@"
-5
-.#.#.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
--1")]
-        [TestCase(@"
-20
-..!..!!!!...!#.!!!.#
-.#!.#.##.#.!..!.#!!!
-!.!.#!#!!!!.!!.!.#!!
-!!#!!..##!!!#...#!.!
-#.!!!!.!..!.!!!!!!!.
-#!!!.!....!...!!!.!#
-!.#.!.!.#.!!!!..!!.#
-.!.!!!..!.!.##!..#!!
-.!!!.!!..###.####..!
-!!.!!..!.......#.!!.
-!#!..!.!!....!.!#.#.
-!#..!.!...!...!#!.!.
-.!!!.#!.!!!!!..!.!.#
-.#!.!..!.!.!!!.#.###
-#.!.!!!#.!...#.#.!#.
-!#!..!!#..#!#!#!!!!!
-.......#!.!!!!#..!!.
-!!!.!.!#!.!#!!#!!!.!
-!.!!.!.#.!.#!..!!..!
-!.....!!.....##.#!!.", @"
-18")]
+8 9 7", @"
+Case #1: OK
+Case #2: 1")]
         public void Test(string input, string output)
         {
             var consoleHelperForTests = new ConsoleHelperForTests(input);
             Program.ConsoleHelper = consoleHelperForTests;
 
-            Program.Solve();
+            Program.Main(null);
 
-            var expected = output.Trim().Replace("\n", string.Empty).Replace("\r", string.Empty);
-            Assert.AreEqual(expected, consoleHelperForTests.Output.First());
+            Assert.AreEqual(output.Trim(), consoleHelperForTests.Output.First());
         }
 
         public class ConsoleHelperForTests : ConsoleHelper
@@ -86,7 +33,7 @@ namespace Contest
             public readonly List<string> Output;
 
             public ConsoleHelperForTests(string input)
-                : this(input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                : this(input.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
             {
             }
 

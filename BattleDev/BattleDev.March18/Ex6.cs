@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace BattleDev.March18.Ex6
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -63,6 +63,7 @@ namespace Contest
 
     public static class Program
     {
+
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -77,7 +78,7 @@ namespace Contest
 
         public static void Solve()
         {
-            
+
         }
     }
 }

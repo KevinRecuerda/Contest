@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace Contest.Magician_versus_Chef
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -77,7 +77,23 @@ namespace Contest
 
         public static void Solve()
         {
-            
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                var input = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+                var n = input[0];
+                var x = input[1];
+                var s = input[2];
+                for (var i = 0; i < s; i++)
+                {
+                    var swap = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+                    if (swap[0] == x)
+                        x = swap[1];
+                    else if (swap[1] == x)
+                        x = swap[0];
+                }
+                ConsoleHelper.WriteLine(x);
+            }
         }
     }
 }

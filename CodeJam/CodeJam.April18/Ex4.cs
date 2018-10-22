@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
-namespace Contest
+namespace CodeJam.April18.Ex4
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -63,6 +64,7 @@ namespace Contest
 
     public static class Program
     {
+
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -72,12 +74,54 @@ namespace Contest
 
         public static void Main(string[] args)
         {
-            Solve();
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var i = 0; i < t; i++)
+            {
+                var line = ConsoleHelper.ReadLine();
+                var a = double.Parse(line, CultureInfo.InvariantCulture);
+
+                var points = Solve(a);
+                var res = string.Join("", points.Select(p => $"{Environment.NewLine}{p}"));
+                ConsoleHelper.WriteLine($"Case #{i + 1}:{res}");
+            }
         }
 
-        public static void Solve()
+        public static List<Point> Solve(double a)
         {
-            
+            var l = a / Math.Sqrt(2);
+            var alpha = Math.PI / 4 - Math.Acos(l);
+            var cos = Math.Cos(alpha) / 2;
+            var sin = Math.Cos(alpha) / 2;
+            return new List<Point>()
+            {
+                new Point(cos, sin, 0),
+                new Point(-sin, cos, 0),
+                new Point(0, 0, 0.5),
+            };
+        }
+
+        public class Point
+        {
+            public double X { get; set; }
+            public double Y { get; set; }
+            public double Z { get; set; }
+
+            public Point(double x, double y, double z)
+            {
+                X = x;
+                Y = y;
+                Z = z;
+            }
+
+            public override string ToString()
+            {
+                return $"{DisplayNumber(X)} {DisplayNumber(Y)} {DisplayNumber(Z)}";
+            }
+
+            private static string DisplayNumber(double number)
+            {
+                return number.ToString("F10", CultureInfo.InvariantCulture);
+            }
         }
     }
 }

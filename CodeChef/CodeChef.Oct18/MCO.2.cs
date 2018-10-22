@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace CodeChef.Oct18.MCO2
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -56,9 +57,10 @@ namespace Contest
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T));
         }
     }
+
     #endregion
 
     public static class Program
@@ -72,12 +74,37 @@ namespace Contest
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
+        }
+
+        public static void SolveMultiple()
+        {
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
         }
 
         public static void Solve()
         {
-            
+            var input = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+            var n = input[0];
+            var k = input[1];
+
+            var h = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+
+            var stepCount = 0;
+
+            var last = 0;
+            for (var i = 0; i < n; i++)
+            {
+                stepCount += (h[i] - last - 1) / k;
+
+                last = h[i];
+            }
+
+            ConsoleHelper.WriteLine(stepCount);
         }
     }
 }

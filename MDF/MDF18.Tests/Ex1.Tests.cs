@@ -1,73 +1,16 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace Contest.MDF18.Ex1.Tests
 {
     [TestFixture]
     public class ProgramTest
     {
         [TestCase(@"
-3
-...
-###
-...", @"
--2")]
-        [TestCase(@"
-4
-....
-#!!#
-#!!#
-....", @"
-4")]
-        [TestCase(@"
-5
-.....
-##!!#
-#!!!#
-#!!##
-.....", @"
--1")]
-        [TestCase(@"
-5
-.#.!.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
-5")]
-        [TestCase(@"
-5
-.#.#.
-.#.#!
-.!.!.
-.#.#.
-.!.#.", @"
--1")]
-        [TestCase(@"
-20
-..!..!!!!...!#.!!!.#
-.#!.#.##.#.!..!.#!!!
-!.!.#!#!!!!.!!.!.#!!
-!!#!!..##!!!#...#!.!
-#.!!!!.!..!.!!!!!!!.
-#!!!.!....!...!!!.!#
-!.#.!.!.#.!!!!..!!.#
-.!.!!!..!.!.##!..#!!
-.!!!.!!..###.####..!
-!!.!!..!.......#.!!.
-!#!..!.!!....!.!#.#.
-!#..!.!...!...!#!.!.
-.!!!.#!.!!!!!..!.!.#
-.#!.!..!.!.!!!.#.###
-#.!.!!!#.!...#.#.!#.
-!#!..!!#..#!#!#!!!!!
-.......#!.!!!!#..!!.
-!!!.!.!#!.!#!!#!!!.!
-!.!!.!.#.!.#!..!!..!
-!.....!!.....##.#!!.", @"
-18")]
+Input", @"
+Output")]
         public void Test(string input, string output)
         {
             var consoleHelperForTests = new ConsoleHelperForTests(input);
@@ -75,8 +18,7 @@ namespace Contest
 
             Program.Solve();
 
-            var expected = output.Trim().Replace("\n", string.Empty).Replace("\r", string.Empty);
-            Assert.AreEqual(expected, consoleHelperForTests.Output.First());
+            Assert.AreEqual(output.Trim(), consoleHelperForTests.Output.First());
         }
 
         public class ConsoleHelperForTests : ConsoleHelper
@@ -86,7 +28,7 @@ namespace Contest
             public readonly List<string> Output;
 
             public ConsoleHelperForTests(string input)
-                : this(input.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                : this(input.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
             {
             }
 

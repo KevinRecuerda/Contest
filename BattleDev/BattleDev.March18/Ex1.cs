@@ -1,8 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 
-namespace Contest
+namespace CodeJam.April18.Ex1
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -63,6 +65,7 @@ namespace Contest
 
     public static class Program
     {
+
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -77,7 +80,8 @@ namespace Contest
 
         public static void Solve()
         {
-            
+            var n = ConsoleHelper.ReadLineAs<int>();
+            ConsoleHelper.WriteLine(n);
         }
     }
 }

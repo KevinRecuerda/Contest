@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace Contest.Chef_and_Adventures
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -63,6 +63,7 @@ namespace Contest
 
     public static class Program
     {
+
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -77,7 +78,22 @@ namespace Contest
 
         public static void Solve()
         {
-            
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                var input = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+                var n = input[0] - 1;
+                var m = input[1] - 1;
+                var x = input[2];
+                var y = input[3];
+
+                var r1 = n - (n / x) * x;
+                var r2 = m - (m / y) * y;
+                var result = r1 == 0 && r2 == 0 || r1 == 1 && r2 == 1 
+                    ? "Chefirnemo" 
+                    : "Pofik";
+                ConsoleHelper.WriteLine(result);
+            }
         }
     }
 }

@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace BattleDev.March18.Ex4
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -63,6 +63,7 @@ namespace Contest
 
     public static class Program
     {
+
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -77,7 +78,55 @@ namespace Contest
 
         public static void Solve()
         {
-            
+            var sizes = new int[6];
+            for (var i = 0; i < 6; i++)
+            {
+                var size = ConsoleHelper.ReadLineAs<int>();
+                sizes[5-i] = size;
+            }
+
+            var cost = GetMinimalCost(sizes, 0);
+            ConsoleHelper.WriteLine(cost);
+        }
+
+        public static int GetMinimalCost(int[] sizes, int depth)
+        {
+            if (IsOrdered(sizes))
+                return depth;
+
+            if (depth == 7)
+                return int.MaxValue;
+
+            var min = int.MaxValue;
+            for (var i = 0; i < 5; i++)
+            {
+                var permut = Permut(sizes, i);
+                var cost = GetMinimalCost(permut, depth + 1);
+                min = Math.Min(min, cost);
+            }
+
+            return min;
+        }
+
+        public static bool IsOrdered(int[] sizes)
+        {
+            return sizes[0] > sizes[1]
+                   && sizes[1] > sizes[2]
+                   && sizes[2] > sizes[3]
+                   && sizes[3] > sizes[4]
+                   && sizes[4] > sizes[5];
+        }
+
+        public static int[] Permut(int[] sizes, int index)
+        {
+            var permut = new int[6];
+            for (var i = 0; i < index; i++)
+                permut[i] = sizes[i];
+
+            for (var i = index; i < 6; i++)
+                permut[i] = sizes[5 - i + index];
+
+            return permut;
         }
     }
 }

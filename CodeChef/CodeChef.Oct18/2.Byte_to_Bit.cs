@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace CodeChef.Oct18.BITOBYT
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -56,9 +57,10 @@ namespace Contest
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T));
         }
     }
+
     #endregion
 
     public static class Program
@@ -72,12 +74,40 @@ namespace Contest
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
+        }
+
+        public static void SolveMultiple()
+        {
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
         }
 
         public static void Solve()
         {
-            
+            var n = ConsoleHelper.ReadLineAs<int>() - 1;
+
+            var bit = 0L;
+            var nibble = 0L;
+            var byte_ = 0L;
+
+            if (n >= 0)
+            {
+                var multiplicator = 1L << n / 26;
+
+                var mod = n % 26;
+                if (mod < 2)
+                    bit = multiplicator;
+                else if (mod < 10)
+                    nibble = multiplicator;
+                else
+                    byte_ = multiplicator;
+            }
+
+            ConsoleHelper.WriteLine(bit + " " + nibble + " " + byte_);
         }
     }
 }

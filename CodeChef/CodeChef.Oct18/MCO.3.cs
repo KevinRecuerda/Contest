@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest
+namespace CodeChef.Oct18.MCO3
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -56,9 +57,10 @@ namespace Contest
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T));
         }
     }
+
     #endregion
 
     public static class Program
@@ -72,12 +74,56 @@ namespace Contest
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
+        }
+
+        public static void SolveMultiple()
+        {
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
         }
 
         public static void Solve()
         {
-            
+            var n = ConsoleHelper.ReadLineAs<int>();
+            var h = ConsoleHelper.ReadLineAndSplitAsListOf<int>().ToArray();
+
+            var left = 0;
+            var right = n - 1;
+            var reservoirCount = Solve(left, right, h);
+
+            ConsoleHelper.WriteLine(reservoirCount);
+        }
+
+        public static int Solve(int left, int right, int[] h)
+        {
+            if (left > right)
+                return 0;
+
+            var max = int.MinValue;
+            var maxIndex = -1;
+            for (var k = left; k <= right; k++)
+            {
+                if (h[k] > max)
+                {
+                    max = h[k];
+                    maxIndex = k;
+                }
+            }
+
+            var reservoirCount = 1;
+
+            if (left < maxIndex && maxIndex < right)
+            {
+                var subRight = Solve(maxIndex + 1, right, h);
+                var subLeft = Solve(left, maxIndex - 1, h);
+                reservoirCount += Math.Min(subRight, subLeft);
+            }
+
+            return reservoirCount;
         }
     }
 }
