@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ex6.Tests.cs" />
     <Compile Include="Ex5.Tests.cs" />
     <Compile Include="Ex4.Tests.cs" />
     <Compile Include="Ex3.Tests.cs" />

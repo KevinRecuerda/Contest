@@ -9,8 +9,11 @@ namespace Contest.MDF18.Ex4.Tests
     public class ProgramTest
     {
         [TestCase(@"
-Input", @"
-Output")]
+3 8
+1 0.5 1.2
+2 1 3
+0.8 0.3 1", @"
+14400")]
         public void Test(string input, string output)
         {
             var consoleHelperForTests = new ConsoleHelperForTests(input);

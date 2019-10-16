@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest.MDF18.Ex1
+namespace Contest.MDF18.Ex6
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -77,43 +77,7 @@ namespace Contest.MDF18.Ex1
 
         public static void Solve()
         {
-            var n = ConsoleHelper.ReadLineAs<int>();
-            var m = ConsoleHelper.ReadLineAs<int>();
-            var capacity = m * 10;
-
-            var lasTime = 0;
-            var people = 0;
-            var sonore = false;
-
-            var duration = 0;
-            for (var i = 0; i < n; i++)
-            {
-                var input = ConsoleHelper.ReadLineAndSplit();
-                var h = input[0].Split(':');
-                var time = int.Parse(h[0]) * 60 + int.Parse(h[1]);
-                var p = input[1];
-
-                if (sonore)
-                    duration += time - lasTime;
-
-                if (p == "E")
-                    people++;
-                else
-                    people--;
-
-                if (people > capacity)
-                    sonore = true;
-                else
-                    sonore = false;
-
-                lasTime = time;
-
-            }
-
-            if (sonore)
-                duration += 23 * 60 - lasTime;
-
-            ConsoleHelper.WriteLine(duration);
+            
         }
     }
 }

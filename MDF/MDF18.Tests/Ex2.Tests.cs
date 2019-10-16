@@ -9,8 +9,14 @@ namespace Contest.MDF18.Ex2.Tests
     public class ProgramTest
     {
         [TestCase(@"
-Input", @"
-Output")]
+5
+aaaa bbbb
+cccc eeee
+bbbb oooo
+aaaa gggg
+gggg dddd
+eeee uuuu", @"
+aaaa ")]
         public void Test(string input, string output)
         {
             var consoleHelperForTests = new ConsoleHelperForTests(input);

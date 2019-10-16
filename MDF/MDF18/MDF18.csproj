@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ex4.cs" />
+    <Compile Include="Ex6.cs" />
     <Compile Include="Ex5.cs" />
     <Compile Include="Ex3.cs" />
     <Compile Include="Ex2.cs" />

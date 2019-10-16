@@ -3,29 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest.MDF18.Ex3.Tests
+namespace Contest.MDF18.Ex6.Tests
 {
     [TestFixture]
     public class ProgramTest
     {
         [TestCase(@"
-15
-.......########
-.......########
-........#######
-.......########
-.........######
-.........######
-..........#.###
-............###
-#.............#
-##.#.........##
-#####.........#
-######.........
-#######........
-#######........
-#######........", @"
-8")]
+Input", @"
+Output")]
         public void Test(string input, string output)
         {
             var consoleHelperForTests = new ConsoleHelperForTests(input);
