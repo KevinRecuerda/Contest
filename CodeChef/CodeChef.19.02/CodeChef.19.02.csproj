@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E57E4817-8658-4835-AFD0-B205C8CD30CB}</ProjectGuid>
+    <ProjectGuid>{BA7288F8-54FD-4A5A-9FAD-F1AECEAD64ED}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodinGame</RootNamespace>
-    <AssemblyName>CodinGame</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <RootNamespace>CodeChef._19._02</RootNamespace>
+    <AssemblyName>CodeChef.19.02</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,12 +23,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,10 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACodeOfIceAndFire.cs" />
-    <Compile Include="MeanMax.cs" />
+    <Compile Include="7.GUESSRT.cs" />
+    <Compile Include="6.MANRECT.cs" />
+    <Compile Include="5.ARTBALAN.cs" />
+    <Compile Include="4.MAGICJAR.cs" />
+    <Compile Include="3.DEPCHEF.cs" />
+    <Compile Include="2.CHEFING.cs" />
+    <Compile Include="1.HMAPPY2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AStarCraft.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

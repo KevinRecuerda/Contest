@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace CodeChef.Feb19.MANRECT
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -58,14 +59,14 @@ namespace BattleDev.March18.Ex1
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
         }
     }
+
     #endregion
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -75,13 +76,47 @@ namespace BattleDev.March18.Ex1
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
         }
 
-        public static void Solve()
+        public static void SolveMultiple()
         {
-            var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
+        }
+
+        public static long Max = (long)Math.Pow(10, 9);
+
+        private static void Solve()
+        {
+            var d0 = AskDist(0, 0);
+            var d1 = AskDist(Max, 0);
+            var delta = d1 - (Max - d0);
+            delta = delta > 0 ? delta / 2 + delta % 2 : 0;
+            var d2 = AskDist(d0 - delta, delta);
+
+            var xl = d0 - delta - d2;
+            var yl = delta + d2;
+
+            var dx = AskDist(Max, yl);
+            var dy = AskDist(xl, Max);
+
+            var xu = Max - dx;
+            var yu = Max - dy;
+
+            ConsoleHelper.WriteLine($"A {xl} {yl} {xu} {yu}");
+            var result = ConsoleHelper.ReadLineAs<long>();
+            if (result != 1)
+                throw new Exception("wrong solution");
+        }
+
+        private static long AskDist(long x, long y)
+        {
+            ConsoleHelper.WriteLine($"Q {x} {y}");
+            return ConsoleHelper.ReadLineAs<long>();
         }
     }
 }

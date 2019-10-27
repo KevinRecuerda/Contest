@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace BattleDev.Mar18.Ex6
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -65,7 +63,6 @@ namespace BattleDev.March18.Ex1
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()

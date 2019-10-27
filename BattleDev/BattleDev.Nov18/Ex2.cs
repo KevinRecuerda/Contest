@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace BattleDev.Nov18.Ex2
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -81,7 +79,19 @@ namespace BattleDev.March18.Ex1
         public static void Solve()
         {
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+
+            var letters = new[] {'a', 'e', 'i', 'o', 'u', 'y'};
+            var magicWords = new HashSet<string>();
+            for (var i = 0; i < n; i++)
+            {
+                var word = ConsoleHelper.ReadLine();
+                if (5 <= word.Length && word.Length <= 7
+                    && word[1] - word[0] == 1
+                    && letters.Contains(word[word.Length-1]))
+                    magicWords.Add(word);
+            }
+
+            ConsoleHelper.WriteLine(magicWords.Count);
         }
     }
 }

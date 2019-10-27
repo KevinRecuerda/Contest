@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace BattleDev.Mar18.Ex2
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -58,14 +57,14 @@ namespace BattleDev.March18.Ex1
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T));
         }
     }
+
     #endregion
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -80,8 +79,24 @@ namespace BattleDev.March18.Ex1
 
         public static void Solve()
         {
+            var res = 0;
+            var current = 0;
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            for (var i = 0; i < n; i++)
+            {
+                var p = ConsoleHelper.ReadLineAs<int>();
+                current += p;
+                if (current > 100)
+                {
+                    res++;
+                    current = p;
+                }
+            }
+
+            if (current > 0)
+                res++;
+
+            ConsoleHelper.WriteLine(res);
         }
     }
 }

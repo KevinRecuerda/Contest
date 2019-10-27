@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+using System.Threading;
 
-namespace BattleDev.March18.Ex1
+namespace CodeChef.October2019.MSV
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -28,20 +28,20 @@ namespace BattleDev.March18.Ex1
 
         public T ReadLineAs<T>()
         {
-            var line = this.ReadLine();
+            var line = ReadLine();
 
             return ConvertTo<T>(line);
         }
 
         public string[] ReadLineAndSplit(char delimiter = ' ')
         {
-            var splittedLine = this.ReadLine().Split(delimiter);
+            var splittedLine = ReadLine().Split(delimiter);
             return splittedLine;
         }
 
         public List<T> ReadLineAndSplitAsListOf<T>(char delimiter = ' ')
         {
-            var splittedLine = this.ReadLineAndSplit();
+            var splittedLine = ReadLineAndSplit();
 
             return splittedLine.Select(ConvertTo<T>).ToList();
         }
@@ -58,14 +58,14 @@ namespace BattleDev.March18.Ex1
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T));
         }
     }
+
     #endregion
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -75,13 +75,37 @@ namespace BattleDev.March18.Ex1
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
+        }
+
+        public static void SolveMultiple()
+        {
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
         }
 
         public static void Solve()
         {
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+
+            var values = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+
+            var starValues = new int[n];
+            for (var i = 0; i < n; i++)
+            {
+                var starValue = 0;
+                for (var j = 0; j <i;j++)
+                    if (values[j] % values[i] == 0)
+                        starValue++;
+
+                starValues[i] = starValue;
+            }
+
+            var r = starValues.Max();
+            ConsoleHelper.WriteLine(r);
         }
     }
 }

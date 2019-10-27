@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{10B80CBB-548E-46ED-98FB-0824315B6493}</ProjectGuid>
+    <ProjectGuid>{DBD7CC3F-0960-4B61-839A-71903BBF6368}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeChef.Oct18.Tests</RootNamespace>
-    <AssemblyName>CodeChef.Oct18.Tests</AssemblyName>
+    <RootNamespace>CodeChef._19._01.Tests</RootNamespace>
+    <AssemblyName>CodeChef.19.01.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,25 +52,18 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MCO.5.Tests.cs" />
-    <Compile Include="MCO.4.Tests.cs" />
-    <Compile Include="MCO.3.Tests.cs" />
-    <Compile Include="MCO.2.Tests.cs" />
-    <Compile Include="MCO.1.Tests.cs" />
-    <Compile Include="5.Chef_and_Circles.Tests.cs" />
-    <Compile Include="4.Appy_and_Balloons.Tests.cs" />
-    <Compile Include="2.Byte_to_Bit.Tests.cs" />
-    <Compile Include="3.Minimize_Digitsum.Tests.cs" />
-    <Compile Include="1.Chef_and_Serves.Tests.cs" />
+    <Compile Include="3.EARTSEQ.Tests.cs" />
+    <Compile Include="2.DIFNEIGH.Tests.cs" />
+    <Compile Include="1.DPAIRS.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodeChef.Oct18\CodeChef.Oct18.csproj">
-      <Project>{7A455C62-0925-409F-B74D-AAA6B2D194EE}</Project>
-      <Name>CodeChef.Oct18</Name>
+    <ProjectReference Include="..\CodeChef.19.01\CodeChef.19.01.csproj">
+      <Project>{72349e03-5a50-4178-8d82-b79aba69936a}</Project>
+      <Name>CodeChef.19.01</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

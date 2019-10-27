@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace CodeChef.Feb19.HMAPPY2
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -58,14 +58,14 @@ namespace BattleDev.March18.Ex1
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
         }
     }
+
     #endregion
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -75,13 +75,55 @@ namespace BattleDev.March18.Ex1
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
         }
 
-        public static void Solve()
+        public static void SolveMultiple()
         {
-            var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
+        }
+
+        private static void Solve()
+        {
+            var size = ConsoleHelper.ReadLineAndSplitAsListOf<long>();
+            var n = size[0];
+            var a = size[1];
+            var b = size[2];
+            var k = size[3];
+
+            var gcd = Gcd(a, b);
+            n /= gcd;
+            a /= gcd;
+            b /= gcd;
+
+            // Solving problems
+            var appySolvingProblems = n / a;
+            var chefSolvingProblems = n / b;
+
+            // Remove intersection
+            appySolvingProblems -= appySolvingProblems / b;
+            chefSolvingProblems -= chefSolvingProblems / a;
+
+            var result = appySolvingProblems + chefSolvingProblems >= k ? "Win" : "Lose";
+
+            ConsoleHelper.WriteLine(result);
+        }
+
+        private static long Gcd(long a, long b)
+        {
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+
+            return a == 0 ? b : a;
         }
     }
 }

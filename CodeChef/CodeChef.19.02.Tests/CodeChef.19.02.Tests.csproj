@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{10B80CBB-548E-46ED-98FB-0824315B6493}</ProjectGuid>
+    <ProjectGuid>{8C43AA50-9527-42B6-ADF5-F65CC87E2B04}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeChef.Oct18.Tests</RootNamespace>
-    <AssemblyName>CodeChef.Oct18.Tests</AssemblyName>
+    <RootNamespace>CodeChef._19._02.Tests</RootNamespace>
+    <AssemblyName>CodeChef.19.02.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,25 +52,22 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MCO.5.Tests.cs" />
-    <Compile Include="MCO.4.Tests.cs" />
-    <Compile Include="MCO.3.Tests.cs" />
-    <Compile Include="MCO.2.Tests.cs" />
-    <Compile Include="MCO.1.Tests.cs" />
-    <Compile Include="5.Chef_and_Circles.Tests.cs" />
-    <Compile Include="4.Appy_and_Balloons.Tests.cs" />
-    <Compile Include="2.Byte_to_Bit.Tests.cs" />
-    <Compile Include="3.Minimize_Digitsum.Tests.cs" />
-    <Compile Include="1.Chef_and_Serves.Tests.cs" />
+    <Compile Include="7.GUESSRT.Tests.cs" />
+    <Compile Include="6.MANRECT.Tests.cs" />
+    <Compile Include="5.ARTBALAN.Tests.cs" />
+    <Compile Include="4.MAGICJAR.Tests.cs" />
+    <Compile Include="3.DEPCHEF.Tests.cs" />
+    <Compile Include="2.CHEFING.Tests.cs" />
+    <Compile Include="1.HMAPPY2.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodeChef.Oct18\CodeChef.Oct18.csproj">
-      <Project>{7A455C62-0925-409F-B74D-AAA6B2D194EE}</Project>
-      <Name>CodeChef.Oct18</Name>
+    <ProjectReference Include="..\CodeChef.19.02\CodeChef.19.02.csproj">
+      <Project>{ba7288f8-54fd-4a5a-9fad-f1aecead64ed}</Project>
+      <Name>CodeChef.19.02</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E57E4817-8658-4835-AFD0-B205C8CD30CB}</ProjectGuid>
+    <ProjectGuid>{72349E03-5A50-4178-8D82-B79ABA69936A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodinGame</RootNamespace>
-    <AssemblyName>CodinGame</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <RootNamespace>CodeChef._19._01</RootNamespace>
+    <AssemblyName>CodeChef.19.01</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACodeOfIceAndFire.cs" />
-    <Compile Include="MeanMax.cs" />
+    <Compile Include="3.EARTSEQ.cs" />
+    <Compile Include="2.DIFNEIGH.cs" />
+    <Compile Include="1.DPAIRS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AStarCraft.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

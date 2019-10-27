@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace CodeChef.October2019.SAKTAN
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -28,20 +26,20 @@ namespace BattleDev.March18.Ex1
 
         public T ReadLineAs<T>()
         {
-            var line = this.ReadLine();
+            var line = ReadLine();
 
             return ConvertTo<T>(line);
         }
 
         public string[] ReadLineAndSplit(char delimiter = ' ')
         {
-            var splittedLine = this.ReadLine().Split(delimiter);
+            var splittedLine = ReadLine().Split(delimiter);
             return splittedLine;
         }
 
         public List<T> ReadLineAndSplitAsListOf<T>(char delimiter = ' ')
         {
-            var splittedLine = this.ReadLineAndSplit();
+            var splittedLine = ReadLineAndSplit();
 
             return splittedLine.Select(ConvertTo<T>).ToList();
         }
@@ -65,7 +63,6 @@ namespace BattleDev.March18.Ex1
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -75,13 +72,47 @@ namespace BattleDev.March18.Ex1
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
+        }
+
+        public static void SolveMultiple()
+        {
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
         }
 
         public static void Solve()
         {
-            var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var input = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+            var n = input[0];
+            var m = input[1];
+            var q = input[2];
+
+            var rows = new HashSet<int>();
+            var cols = new HashSet<int>();
+            for (var i = 0; i < q; i++)
+            {
+                input = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+                var x = input[0];
+                var y = input[1];
+
+                if (rows.Contains(x))
+                    rows.Remove(x);
+                else
+                    rows.Add(x);
+
+                if (cols.Contains(y))
+                    cols.Remove(y);
+                else
+                    cols.Add(y);
+            }
+
+            //var r = rows.Count * (m - cols.Count) + cols.Count * (n - rows.Count);
+            var r = rows.Count * m + cols.Count * n - 2 * rows.Count * cols.Count;
+            ConsoleHelper.WriteLine(r);
         }
     }
 }

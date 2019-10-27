@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace CodeChef.Jan19.DPAIRS
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -58,14 +58,14 @@ namespace BattleDev.March18.Ex1
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
         }
     }
+
     #endregion
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -78,10 +78,35 @@ namespace BattleDev.March18.Ex1
             Solve();
         }
 
-        public static void Solve()
+        public static void SolveMultiple()
         {
-            var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
+        }
+
+        private static void Solve()
+        {
+            var size = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+            var n = size[0];
+            var m = size[1];
+
+            var a = ConsoleHelper.ReadLineAndSplitAsListOf<long>();
+            var b = ConsoleHelper.ReadLineAndSplitAsListOf<long>();
+
+            var a_min = a.Min();
+            var b_max = b.Max();
+
+            var a_min_index = a.IndexOf(a_min);
+            var b_max_index = b.IndexOf(b_max);
+
+            var verticalLine = Enumerable.Range(0, m).Select(x => $"{a_min_index} {x}");
+            var horizontalLine = Enumerable.Range(0, n).Where(x => x != a_min_index).Select(x => $"{x} {b_max_index}");
+            var result = verticalLine.Union(horizontalLine);
+
+            ConsoleHelper.WriteLine(string.Join(Environment.NewLine, result));
         }
     }
 }

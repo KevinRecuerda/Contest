@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace BattleDev.Mar18.Ex3
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -65,7 +63,6 @@ namespace BattleDev.March18.Ex1
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -81,7 +78,49 @@ namespace BattleDev.March18.Ex1
         public static void Solve()
         {
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+
+            var map = new char[n][];
+            for (var i = 0; i < n; i++)
+            {
+                var line = ConsoleHelper.ReadLine();
+                map[i] = line.ToCharArray();
+            }
+
+            var move = "";
+            var isRight = true;
+            for (var i = 0; i < n; i++)
+            {
+                for (var j = 0; j < n; j++)
+                {
+                    if (map[i][isRight ? j : n - 1 - j] == 'o')
+                        move += "x";
+
+                    if (j < n - 1)
+                        move += isRight ? ">" : "<";
+                    else if (i < n-1)
+                        move += 'v';
+                }
+                isRight = !isRight;
+            }
+
+            isRight = n%2 == 0;
+            for (var i = n-1; i >= 0; i--)
+            {
+                for (var j = 0; j < n; j++)
+                {
+                    if (map[i][isRight ? j : n - 1 - j] == '*')
+                        move += "x";
+
+                    if (j < n - 1)
+                        move += isRight ? ">" : "<";
+                    else if (i > 0)
+                        move += '^';
+                }
+
+                isRight = !isRight;
+            }
+
+            ConsoleHelper.WriteLine(move);
         }
     }
 }

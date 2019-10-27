@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace BattleDev.Nov18.Ex3
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -81,7 +79,26 @@ namespace BattleDev.March18.Ex1
         public static void Solve()
         {
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var numbers = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+
+            var x = n / 2.0;
+            var infinityFound = false;
+            var count = numbers[0] == x ? 1 : 0;
+            for (var i = 0; i < n; i++)
+            {
+                if (x == numbers[i] && x == numbers[i + 1])
+                {
+                    infinityFound = true;
+                    break;
+                }
+
+                if (numbers[i] < x && x <= numbers[i + 1]
+                    || numbers[i] > x && x >= numbers[i+1])
+                    count++;
+            }
+
+            var res = infinityFound?"INF": count.ToString();
+            ConsoleHelper.WriteLine(res);
         }
     }
 }

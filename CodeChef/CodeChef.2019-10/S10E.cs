@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace CodeChef.October2019.S10E
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -28,20 +26,20 @@ namespace BattleDev.March18.Ex1
 
         public T ReadLineAs<T>()
         {
-            var line = this.ReadLine();
+            var line = ReadLine();
 
             return ConvertTo<T>(line);
         }
 
         public string[] ReadLineAndSplit(char delimiter = ' ')
         {
-            var splittedLine = this.ReadLine().Split(delimiter);
+            var splittedLine = ReadLine().Split(delimiter);
             return splittedLine;
         }
 
         public List<T> ReadLineAndSplitAsListOf<T>(char delimiter = ' ')
         {
-            var splittedLine = this.ReadLineAndSplit();
+            var splittedLine = ReadLineAndSplit();
 
             return splittedLine.Select(ConvertTo<T>).ToList();
         }
@@ -65,7 +63,6 @@ namespace BattleDev.March18.Ex1
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -75,13 +72,37 @@ namespace BattleDev.March18.Ex1
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
+        }
+
+        public static void SolveMultiple()
+        {
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
         }
 
         public static void Solve()
         {
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var prices = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
+
+            var queue = new Queue<int>();
+            var r = 0;
+            for (var i = 0; i < n; i++)
+            {
+                var price = prices[i];
+                if (i == 0 || price < queue.Min())
+                    r++;
+
+                queue.Enqueue(price);
+                if (i >= 5)
+                    queue.Dequeue();
+            }
+
+            ConsoleHelper.WriteLine(r);
         }
     }
 }

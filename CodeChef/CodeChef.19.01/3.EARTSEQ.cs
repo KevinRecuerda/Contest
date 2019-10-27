@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace CodeChef.Jan19.EARTSEQ
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -58,14 +58,14 @@ namespace BattleDev.March18.Ex1
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
         }
     }
+
     #endregion
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -73,15 +73,53 @@ namespace BattleDev.March18.Ex1
             ConsoleHelper = new ConsoleHelper();
         }
 
+        public static List<int> Primes;
+
         public static void Main(string[] args)
         {
-            Solve();
+            Primes = GeneratePrimes(50000);
+            SolveMultiple();
         }
 
-        public static void Solve()
+        public static void SolveMultiple()
+        {
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
+        }
+
+        private static void Solve()
         {
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+
+            ConsoleHelper.WriteLine("");
+        }
+
+        public static List<int> GeneratePrimes(int n)
+        {
+            var primes = new List<int> {2};
+            var nextPrime = 3;
+            while (primes.Count < n)
+            {
+                var sqrt = (int)Math.Sqrt(nextPrime);
+                var isPrime = true;
+                for (var i = 0; primes[i] <= sqrt; i++)
+                {
+                    if (nextPrime % primes[i] == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+                if (isPrime)
+                    primes.Add(nextPrime);
+
+                nextPrime += 2;
+            }
+            return primes;
         }
     }
 }

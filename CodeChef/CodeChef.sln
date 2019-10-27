@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChef.Sept18", "CodeChef.Sept18\CodeChef.Sept18.csproj", "{66D6458A-4252-4F61-A0DC-130775E0CD1F}"
 EndProject
@@ -10,6 +10,22 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChef.Oct18", "CodeChef.Oct18\CodeChef.Oct18.csproj", "{7A455C62-0925-409F-B74D-AAA6B2D194EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChef.Oct18.Tests", "CodeChef.Oct18.Tests\CodeChef.Oct18.Tests.csproj", "{10B80CBB-548E-46ED-98FB-0824315B6493}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChef.19.01", "CodeChef.19.01\CodeChef.19.01.csproj", "{72349E03-5A50-4178-8D82-B79ABA69936A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChef.19.01.Tests", "CodeChef.19.01.Tests\CodeChef.19.01.Tests.csproj", "{DBD7CC3F-0960-4B61-839A-71903BBF6368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChef.19.02.Tests", "CodeChef.19.02.Tests\CodeChef.19.02.Tests.csproj", "{8C43AA50-9527-42B6-ADF5-F65CC87E2B04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChef.19.02", "CodeChef.19.02\CodeChef.19.02.csproj", "{BA7288F8-54FD-4A5A-9FAD-F1AECEAD64ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChef.CookOff.19.04", "CodeChef.CookOff.19.04\CodeChef.CookOff.19.04.csproj", "{CBA8514B-4FCD-49E5-BC42-07C3494E5C18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChef.CookOff.19.04.Tests", "CodeChef.CookOff.19.04.Tests\CodeChef.CookOff.19.04.Tests.csproj", "{EAE18554-E073-4F1C-85AB-91A887A04A89}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeChef.2019-10", "CodeChef.2019-10\CodeChef.2019-10.csproj", "{54BB954B-E9E0-471D-8155-6A9670598D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChef.2019-10.Tests", "CodeChef.2019-10.Tests\CodeChef.2019-10.Tests.csproj", "{FB55447E-3751-4D89-BDD3-28B99656A2D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +49,38 @@ Global
 		{10B80CBB-548E-46ED-98FB-0824315B6493}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10B80CBB-548E-46ED-98FB-0824315B6493}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10B80CBB-548E-46ED-98FB-0824315B6493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72349E03-5A50-4178-8D82-B79ABA69936A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72349E03-5A50-4178-8D82-B79ABA69936A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72349E03-5A50-4178-8D82-B79ABA69936A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72349E03-5A50-4178-8D82-B79ABA69936A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD7CC3F-0960-4B61-839A-71903BBF6368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD7CC3F-0960-4B61-839A-71903BBF6368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD7CC3F-0960-4B61-839A-71903BBF6368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD7CC3F-0960-4B61-839A-71903BBF6368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C43AA50-9527-42B6-ADF5-F65CC87E2B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C43AA50-9527-42B6-ADF5-F65CC87E2B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C43AA50-9527-42B6-ADF5-F65CC87E2B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C43AA50-9527-42B6-ADF5-F65CC87E2B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA7288F8-54FD-4A5A-9FAD-F1AECEAD64ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7288F8-54FD-4A5A-9FAD-F1AECEAD64ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7288F8-54FD-4A5A-9FAD-F1AECEAD64ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7288F8-54FD-4A5A-9FAD-F1AECEAD64ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA8514B-4FCD-49E5-BC42-07C3494E5C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA8514B-4FCD-49E5-BC42-07C3494E5C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA8514B-4FCD-49E5-BC42-07C3494E5C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA8514B-4FCD-49E5-BC42-07C3494E5C18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE18554-E073-4F1C-85AB-91A887A04A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE18554-E073-4F1C-85AB-91A887A04A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE18554-E073-4F1C-85AB-91A887A04A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE18554-E073-4F1C-85AB-91A887A04A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54BB954B-E9E0-471D-8155-6A9670598D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54BB954B-E9E0-471D-8155-6A9670598D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54BB954B-E9E0-471D-8155-6A9670598D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54BB954B-E9E0-471D-8155-6A9670598D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB55447E-3751-4D89-BDD3-28B99656A2D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB55447E-3751-4D89-BDD3-28B99656A2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB55447E-3751-4D89-BDD3-28B99656A2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB55447E-3751-4D89-BDD3-28B99656A2D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

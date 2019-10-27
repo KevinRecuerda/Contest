@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace BattleDev.Mar18.Ex4
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -65,7 +63,6 @@ namespace BattleDev.March18.Ex1
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -81,7 +78,56 @@ namespace BattleDev.March18.Ex1
         public static void Solve()
         {
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var words = new string[n];
+            for (var i = 0; i < n; i++)
+            {
+                words[i] = ConsoleHelper.ReadLine();
+            }
+
+            var res = Find(words);
+            if (res == "")
+                res = "KO";
+
+            ConsoleHelper.WriteLine(res);
+        }
+
+        private static string Find(string[] words)
+        {
+            var w = words[0];
+            if (w.Length == 0)
+                return "";
+
+            // Ignore
+            var ignoreWords = new string[words.Length];
+            ignoreWords[0] = w.Substring(1);
+            for (var i = 1; i < words.Length; i++)
+                ignoreWords[i] = words[i];
+            var max = Find(ignoreWords);
+
+            // Take
+            var isOk = true;
+            var takeWords = new string[words.Length];
+            takeWords[0] = w.Substring(1);
+            for (var i = 1; i < words.Length; i++)
+            {
+                var idx = words[i].IndexOf(w[0]);
+                if (idx < 0)
+                {
+                    isOk = false;
+                    break;
+                }
+
+                takeWords[i] = words[i].Substring(idx+1);
+            }
+
+            if (isOk)
+            {
+                var take = w[0] + Find(takeWords);
+                if (take.Length > max.Length)
+                    max = take;
+            }
+
+            return max;
         }
     }
 }

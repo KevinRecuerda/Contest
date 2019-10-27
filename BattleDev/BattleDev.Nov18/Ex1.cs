@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace BattleDev.Nov18.Ex1
 {
     #region ConsoleHelper
     public interface IConsoleHelper
@@ -81,7 +79,21 @@ namespace BattleDev.March18.Ex1
         public static void Solve()
         {
             var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var price = ConsoleHelper.ReadLineAs<int>();
+            var res = "KO";
+            for (var i = 0; i < n; i++)
+            {
+                var input = ConsoleHelper.ReadLineAndSplit();
+                var p = int.Parse(input[0]);
+                var e = input[1];
+
+                if (p > price)
+                {
+                    price = p;
+                    res = e;
+                }
+            }
+            ConsoleHelper.WriteLine(res);
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace BattleDev.March18.Ex1
+namespace CodeChef.Feb19.ARTBALAN
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -58,14 +58,14 @@ namespace BattleDev.March18.Ex1
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
         }
     }
+
     #endregion
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -75,13 +75,45 @@ namespace BattleDev.March18.Ex1
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
         }
 
-        public static void Solve()
+        public static void SolveMultiple()
         {
-            var n = ConsoleHelper.ReadLineAs<int>();
-            ConsoleHelper.WriteLine(n);
+            var t = ConsoleHelper.ReadLineAs<int>();
+            for (var k = 0; k < t; k++)
+            {
+                Solve();
+            }
+        }
+
+        private static void Solve()
+        {
+            var s = ConsoleHelper.ReadLine();
+
+            var charCountDico = s.ToCharArray().GroupBy(c => c).ToDictionary(c => c.Key, c => c.Count());
+            var charCount = charCountDico.Values.ToList();
+            while (charCount.Count < 26)
+                charCount.Add(0);
+
+            charCount = charCount.OrderByDescending(v => v).ToList();
+
+            var min = int.MaxValue;
+            for (var i = 1; i <= 26; i++)
+            {
+                if (s.Length % i != 0)
+                    continue;
+
+                var average = s.Length / i;
+                var dist = charCount.Take(i).Sum(c => Math.Abs(c - average))
+                         + charCount.Skip(i).Sum();
+
+                var opCount = dist / 2;
+                if (opCount < min)
+                    min = opCount;
+            }
+
+            ConsoleHelper.WriteLine(min);
         }
     }
 }
