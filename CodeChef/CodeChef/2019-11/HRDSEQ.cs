@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Contest.Magician_versus_Chef
+namespace CodeChef._2019_11.HRDSEQ
 {
     #region ConsoleHelper
+
     public interface IConsoleHelper
     {
         string ReadLine();
@@ -26,20 +27,20 @@ namespace Contest.Magician_versus_Chef
 
         public T ReadLineAs<T>()
         {
-            var line = this.ReadLine();
+            var line = ReadLine();
 
             return ConvertTo<T>(line);
         }
 
         public string[] ReadLineAndSplit(char delimiter = ' ')
         {
-            var splittedLine = this.ReadLine().Split(delimiter);
+            var splittedLine = ReadLine().Split(delimiter);
             return splittedLine;
         }
 
         public List<T> ReadLineAndSplitAsListOf<T>(char delimiter = ' ')
         {
-            var splittedLine = this.ReadLineAndSplit();
+            var splittedLine = ReadLineAndSplit();
 
             return splittedLine.Select(ConvertTo<T>).ToList();
         }
@@ -56,14 +57,14 @@ namespace Contest.Magician_versus_Chef
 
         private static T ConvertTo<T>(string value)
         {
-            return (T)Convert.ChangeType(value, typeof(T));
+            return (T) Convert.ChangeType(value, typeof(T));
         }
     }
+
     #endregion
 
     public static class Program
     {
-
         public static IConsoleHelper ConsoleHelper;
 
         static Program()
@@ -73,28 +74,49 @@ namespace Contest.Magician_versus_Chef
 
         public static void Main(string[] args)
         {
-            Solve();
+            SolveMultiple();
         }
 
-        public static void Solve()
+        public static void SolveMultiple()
         {
             var t = ConsoleHelper.ReadLineAs<int>();
             for (var k = 0; k < t; k++)
             {
-                var input = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
-                var n = input[0];
-                var x = input[1];
-                var s = input[2];
-                for (var i = 0; i < s; i++)
-                {
-                    var swap = ConsoleHelper.ReadLineAndSplitAsListOf<int>();
-                    if (swap[0] == x)
-                        x = swap[1];
-                    else if (swap[1] == x)
-                        x = swap[0];
-                }
-                ConsoleHelper.WriteLine(x);
+                Solve();
             }
+        }
+
+        public static void Solve()
+        {
+            var n = ConsoleHelper.ReadLineAs<int>();
+
+            var sequence = BuildSequence(n);
+
+            var x = sequence[n - 1];
+            var count = sequence.Count(i => i == x);
+
+            ConsoleHelper.WriteLine(count);
+        }
+
+        private static int[] BuildSequence(int n)
+        {
+            var sequence = new int[n];
+            sequence[0] = 0;
+
+            var lastNumbers = Enumerable.Range(1, n).Select(i => -1).ToArray();
+
+            for (var i = 1; i < n; i++)
+            {
+                var last = sequence[i - 1];
+
+                sequence[i] = 0;
+                if (lastNumbers[last] != -1)
+                    sequence[i] = i - lastNumbers[last];
+
+                lastNumbers[last] = i - 1;
+            }
+
+            return sequence;
         }
     }
 }
